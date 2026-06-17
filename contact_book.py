@@ -93,6 +93,15 @@ class ContactBook:
             logger.info(f"未找到 \"{keyword}\"")
         return results                     # 返回列表，不是数量
 
+    def search_by_phone(self, phone):
+        """按电话查找"""
+        results = [c for c in self.contacts if phone in c['phone']]
+        if results:
+            for c in results:
+                print(f"  {c['name']} - {c['phone']}")
+        else:
+            print(f"[X] 没找到: {phone}")
+
     def delete(self, name):
         """按姓名删除联系人"""
         before = len(self.contacts)
